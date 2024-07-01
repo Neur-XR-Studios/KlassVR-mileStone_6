@@ -1,0 +1,12 @@
+{
+  "name": "com.xr.integration.interaction",
+  "displayName": "[SDK] XR Interaction",
+  "version": "1.0.0",
+  "unity": "2019.4",
+  "keywords": [
+    "XR",
+    "Interaction",
+    "SDK"
+  ],
+  "description": "XR Interaction SDK"
+}

@@ -1,0 +1,30 @@
+Klass VR
+
+bounding box
+----------------------
+Model scale- StartActivitySingleObject
+
+ 
+
+ SetBoxColliderBasedOnSize
+-------------------
+  annotationmanager.cs- ( SetBoxColliderBasedOnSize)
+
+
+Model hierarchy
+-------------------
+Parent (all script , game object) -RuntimeImportBehaviourHelper
+  Model Parent
+     5b76e
+       sketchFab
+       
+   
+Asset Downloader
+-----------------
+Checking the condition api.youtubeURL null or not and api.assessmentsString null or not
+
+
+   
+Assign bounding box value frome previous data
+-----------------
+modelScale.SetServerValue(child.gameObject);

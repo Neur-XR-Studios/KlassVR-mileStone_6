@@ -1,0 +1,41 @@
+{
+    "name": "Unity.XR.GSXRSamples",
+    "references": [
+        "Unity.XR.Management",
+        "Unity.ugui",
+        "Unity.InputSystem",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.TextMeshPro",
+        "Unity.XR.GSXR"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.0.2",
+            "define": "UNITY_INPUT_SYSTEM"
+        },
+        {
+            "name": "com.unity.xr.management",
+            "expression": "3.2.0",
+            "define": "XR_MGMT_GTE_320"
+        },
+        {
+            "name": "com.unity.textmeshpro",
+            "expression": "1.5.6",
+            "define": "UNITY_TEXTMESHPRO"
+        },
+        {
+            "name": "com.unity.xr.interaction.toolkit",
+            "expression": "0.9.4-preview",
+            "define": "UNITY_XRINTERACTION_TOOLKIT"
+        }
+    ],
+    "noEngineReferences": false
+}

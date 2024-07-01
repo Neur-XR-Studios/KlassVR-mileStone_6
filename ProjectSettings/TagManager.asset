@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - VRModel
+  - CubeButton
+  - Option4
+  - Option3
+  - Archery
+  - Option1
+  - Option2
+  - Ground
+  - Reticle
+  - text
+  - BasketBall
+  - arrow
+  - BasketBallNext
+  - arrowButton
+  - VRModel1
+  - VRModel2
+  - test
+  - 3dmodel
+  - notAChild
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - ButtonObject
+  - Water
+  - UI
+  - Character- Female
+  - 3dModel
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ui
+    uniqueID: 373810291
+    locked: 0

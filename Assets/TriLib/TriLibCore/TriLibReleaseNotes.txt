@@ -1,0 +1,13 @@
+﻿2.2.3
+Changelog:
+-Fixed FBX ASCII embedded data reading.
+-Fixed OBJ files texture naming.
+-Fixed multiple parallel files loading bug.
+-Fixed built-in ExternalDataMapper regression issue preventing ZIP files from loading.
+-Fixed glTF2 empty arrays parsing.
+-Fixed normal map textures creation.
+-Fixed STL binary parsing issue.
+-Added lights CastShadow property parsing.
+-Added FBX physical camera properties parsing.
+-Added option in the TriLib settings menu to change in-editor loading timeout.
+-Misc. fixes.

@@ -1,0 +1,190 @@
+[0619/101550.114:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/102159.443:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/102334.231:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/103739.522:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/104306.551:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/104644.733:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/110814.195:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/110906.137:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/111112.356:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/111528.574:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/112940.975:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/113225.838:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/114747.978:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0619/114747.981:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/115703.347:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/120809.638:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/121221.032:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/121426.033:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/122301.666:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/122753.352:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0619/130024.064:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/132116.768:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0619/132221.834:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/132646.438:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/133013.484:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/133458.313:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/133824.041:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/142723.202:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/143032.127:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/143432.471:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/151945.761:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/152931.373:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/165604.049:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/190540.363:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0619/191502.021:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0620/135211.653:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0621/105425.619:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0621/105530.501:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0621/105756.286:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0621/110440.011:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0621/125400.160:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0621/172315.588:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/094834.444:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/095244.408:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/100417.184:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/101905.957:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/114905.024:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/121808.954:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/122441.808:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/122957.930:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/123530.640:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/125242.772:WARNING:dns_config_service_win.cc(606)] Failed to read DnsConfig.
+[0622/125242.794:WARNING:dns_config_service_win.cc(606)] Failed to read DnsConfig.
+[0622/125247.793:WARNING:dns_config_service_win.cc(606)] Failed to read DnsConfig.
+[0622/125247.809:WARNING:dns_config_service_win.cc(606)] Failed to read DnsConfig.
+[0622/125257.798:WARNING:dns_config_service_win.cc(606)] Failed to read DnsConfig.
+[0622/125257.815:WARNING:dns_config_service_win.cc(606)] Failed to read DnsConfig.
+[0622/125835.582:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/131705.262:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0622/131820.529:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0624/143135.745:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0624/143135.761:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0624/160423.898:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0624/170631.295:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0624/174237.608:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/114854.756:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/114927.057:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/115123.441:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/115148.151:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/115230.775:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/115402.714:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/115519.894:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/121410.444:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/121745.407:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/122111.033:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/122906.167:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/123312.505:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/123641.589:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/150759.282:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/151201.438:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/151321.549:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/151416.171:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/152214.890:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/152409.200:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/152614.755:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/152728.995:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/152902.276:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/153011.550:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/153259.489:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/164604.353:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/164727.556:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/164842.714:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0625/164950.853:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/124842.737:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/124959.429:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/125538.255:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/130120.327:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/130240.687:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/143453.431:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/143624.184:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/143727.159:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/143747.814:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/144156.374:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/144325.049:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/144345.496:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/150831.380:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/152106.525:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/152532.112:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/153023.409:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/161515.220:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/161544.627:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/161605.047:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/161633.815:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/163052.198:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/163420.690:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/163555.129:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/163644.729:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/163727.025:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/164033.386:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/164429.381:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/182210.942:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/182406.956:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/182632.343:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/182701.933:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/182828.534:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/182951.157:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/183028.466:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/183209.777:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/183548.487:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/183735.581:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184032.263:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184138.512:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184240.864:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184347.736:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184440.357:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184626.224:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/184804.158:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/185154.660:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/185206.072:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0626/185206.072:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0626/185206.076:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/185322.777:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/190910.722:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/191753.439:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0626/192343.185:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/132106.065:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/132651.272:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/132751.078:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/133203.913:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/133253.454:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/133315.879:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/133344.628:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/133628.898:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/133736.371:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/134018.938:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/134511.848:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/134544.111:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/134642.761:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/134800.558:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/135253.342:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/135940.720:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/140413.836:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/140809.813:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/154003.967:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/154253.910:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/154454.948:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/154648.555:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/155601.628:WARNING:process_singleton_win.cc(417)] Lock file exists but is writable.
+[0627/155927.927:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/160001.575:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/161034.005:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/161226.038:ERROR:ChromiumLogFunctions.h(15)] [WindowsChromiumToPluginBridge] ReadFile failed with error code: 109
+[0627/161226.038:ERROR:ChromiumLogFunctions.h(15)] [WindowsChromiumToPluginBridge] WriteFile failed with error code: 232
+[0627/161252.882:ERROR:ChromiumLogFunctions.h(15)] Didn't receive a heartbeat message from the main process, so it must have died. Terminating the Vuplex WebView Chromium process...
+[0627/161252.915:ERROR:ChromiumLogFunctions.h(15)] [WindowsChromiumToPluginBridge] WriteFile failed with error code: 232
+[0627/161341.853:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0627/161341.853:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0627/161341.855:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/161850.775:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0627/161956.496:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/204613.503:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/204751.294:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/205048.941:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/205207.949:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/211427.116:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/211720.337:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0628/211720.342:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0628/222405.731:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0629/133648.349:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0629/134933.926:WARNING:task_impl.cc(32)] No task runner for threadId 0
