@@ -31,7 +31,6 @@ public class Ontrigger : MonoBehaviour
    
 
 
-
     private void Start()
     {
         gamificationManager=FindObjectOfType<GamificationManager>();
@@ -40,8 +39,18 @@ public class Ontrigger : MonoBehaviour
         //staringPoint = gameObject.transform;
         GamificationController.isGamefication=true;
     }
-
-   
+  
+    public void ArrowTouchSpawn()
+    {
+        if(gamificationController.arrowstatus)
+        {
+            GamificationController.isGamefication = false;
+            gamificationController.ToggleCollider(true);
+            StartSpawning();
+        }
+       
+      
+    }
     private void OnTriggerStay(Collider other)
     {
       
@@ -103,7 +112,7 @@ public class Ontrigger : MonoBehaviour
     }
     private void Update()
     {
-       
+     
 
     }
   

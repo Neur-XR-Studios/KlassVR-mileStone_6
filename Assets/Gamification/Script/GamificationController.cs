@@ -22,12 +22,28 @@ public class GamificationController : MonoBehaviour
     public GameObject arrowVisualize;
     private int gameNumber;
     private GamificationManager gamificationManager;
+    public BoxCollider[] boxColliders;
+    public bool arrowstatus;
+   
     void Start()
     {
         gamificationManager=FindAnyObjectByType<GamificationManager>();
         gameNumber = 1;
         audioSource = gameObject.GetComponent<AudioSource>();
 
+    }
+    public void ToggleCollider(bool isTrue)
+    {
+        foreach (BoxCollider item in boxColliders)
+        {
+            item.enabled = isTrue;  
+        }
+        arrowstatus = !isTrue;
+
+}
+    public void ActivateArrowStatus()
+    {
+        ToggleCollider(false);
     }
     public void EnbleClick()
     {
