@@ -94,9 +94,10 @@ public class GamificationController : MonoBehaviour
     }
     private IEnumerator ParentUnchildDelay()
     {
+        yield return new WaitForSeconds(.2f);
         startPoint.transform.SetParent(null);
         startpoint_A.transform.SetParent(null);
-        yield return new WaitForSeconds(1f);
+      //  yield return new WaitForSeconds(1f);
     }
     public void SetParent()
     {
