@@ -1,4 +1,5 @@
 
+using GLTFast.Schema;
 using SimpleJSON;
 using System;
 using System.Collections;
@@ -55,9 +56,11 @@ public class API : MonoBehaviour
     private bool isThreeSixty;
     private ThreesixtyImageManager threesixtyImageManager;
     private WebManager webManager;
+    private ChangeClassRoom room;
     private void Start()
     {
-        webManager= FindAnyObjectByType<WebManager>();
+        room=FindAnyObjectByType<ChangeClassRoom>();
+        webManager = FindAnyObjectByType<WebManager>();
         threesixtyImageManager =FindAnyObjectByType<ThreesixtyImageManager>();
         assetDownloader =FindAnyObjectByType<AssetDownloader>();
           VrManager = FindAnyObjectByType<ClassVrManager>();
@@ -163,8 +166,8 @@ public class API : MonoBehaviour
                         string youTubeVideoScript = content["youTubeVideoScript"];
                         string youTubeStartTimer = content["youTubeStartTimer"];
                         string youTubeEndTimer = content["youTubeEndTimer"];
-                       
-
+                        string classEnvironment = content["classEnvironment"].Value;
+                        room.AssignClassRoom(classEnvironment);
 
                          JSONArray modelDetails = content["modelDetails"].AsArray;
                         if (modelDetails != null)
