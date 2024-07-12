@@ -12,8 +12,8 @@ namespace LightShaft.Scripts
         public API api;
         public override void Start()
         {
-           youtubeUrl = api.youtubeURL;
-          // youtubeUrl =
+            youtubeUrl = api.youtubeURL;
+            // youtubeUrl =
             base.Start();
             //Register Events
             if (!playUsingInternalDevicePlayer)
@@ -22,7 +22,7 @@ namespace LightShaft.Scripts
                 _events.OnVideoFinished.AddListener(OnVideoPlayerFinished);
                 _events.OnVideoReadyToStart.AddListener(OnVideoLoaded);
             }
-          //  Pause();
+            //  Pause();
         }
 
         ///<summary>This function is callback only, only will be called when the on url are ready to use.</summary>

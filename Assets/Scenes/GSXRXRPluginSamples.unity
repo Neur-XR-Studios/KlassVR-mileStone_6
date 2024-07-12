@@ -9612,7 +9612,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 444734229}
+      - m_Target: {fileID: 1697051658334030910}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -9622,7 +9622,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   WithoutSkippingModel:
     m_PersistentCalls:
@@ -9795,6 +9795,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 0
+      - m_Target: {fileID: 1697051658334030910}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   VideoEndFirst:
     m_PersistentCalls:
       m_Calls:
@@ -9906,6 +9918,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 0
+      - m_Target: {fileID: 1697051658334030910}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   MCQ:
     m_PersistentCalls:
       m_Calls:
@@ -14225,6 +14249,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 851732604}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1697051658334030910}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -19896,11 +19932,13 @@ MonoBehaviour:
   targetposition: {fileID: 1434074067}
   enableToDisable:
   - {fileID: 919132148541142801}
+  - {fileID: 1697051658334030910}
   DisableElemet:
   - {fileID: 1606305716}
   - {fileID: 421610452}
   - {fileID: 2562534602821061593}
   - {fileID: 1606305716}
+  - {fileID: 1697051658334030910}
   startingEvent:
     m_PersistentCalls:
       m_Calls:
@@ -21629,7 +21667,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6799997207423774974}
-  - {fileID: 5923463336470730781}
   - {fileID: 8811012405360005497}
   - {fileID: 1395249966}
   - {fileID: 1474986152}
@@ -28049,17 +28086,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2611536638921646144}
     m_Modifications:
+    - target: {fileID: 2320242820634562239, guid: 3415f65b6100dcb4f95896798db22b42, type: 3}
+      propertyPath: youtubeUrl
+      value: https://youtu.be/FPiZ7z6lU54?si=1qLX4iTYMeuD6vTA
+      objectReference: {fileID: 0}
     - target: {fileID: 3620135033519568795, guid: 3415f65b6100dcb4f95896798db22b42, type: 3}
       propertyPath: m_Name
       value: Youtube360Player----Testing
       objectReference: {fileID: 0}
     - target: {fileID: 3620135033519568795, guid: 3415f65b6100dcb4f95896798db22b42, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6463107318930592647, guid: 3415f65b6100dcb4f95896798db22b42, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8411890158587814510, guid: 3415f65b6100dcb4f95896798db22b42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28103,7 +28144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8902508806988689944, guid: 3415f65b6100dcb4f95896798db22b42, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -44431,11 +44472,11 @@ Transform:
   m_GameObject: {fileID: 8596527261036218368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.13581942, z: 0.3218728}
+  m_LocalPosition: {x: 0, y: 0.000019416213, z: -0.003198713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1430360163}
+  m_Father: {fileID: 8811012405360005497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5927770728547474351
 GameObject:
@@ -51719,6 +51760,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1370395689}
+  - {fileID: 5923463336470730781}
   m_Father: {fileID: 1430360163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8838884437482752099
