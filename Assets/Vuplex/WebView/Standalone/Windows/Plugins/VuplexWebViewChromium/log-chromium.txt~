@@ -256,3 +256,14 @@
 [0712/134237.281:WARNING:task_impl.cc(32)] No task runner for threadId 0
 [0712/134521.434:WARNING:task_impl.cc(32)] No task runner for threadId 0
 [0712/134635.691:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/135020.746:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/135544.714:ERROR:shared_image_manager.cc(225)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0712/135559.590:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/135839.161:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/154800.163:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/165647.802:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/170028.913:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/170403.175:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/172030.893:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/172250.626:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/172423.046:WARNING:task_impl.cc(32)] No task runner for threadId 0

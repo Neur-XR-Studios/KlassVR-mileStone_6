@@ -106,7 +106,7 @@ public class VideoManager : MonoBehaviour
             avpro.SetActive(false);
             youtubePlayer.gameObject.SetActive(true);
             videoPlayer = youtubePlayer.GetComponent<VideoPlayer>();
-           // ytbPlayer.startFromSecondTime = (int)startTimer; 
+            //ytbPlayer.startFromSecondTime = (int)startTimer; 
             videoPlayer.prepareCompleted += OnPrepareCompleted;
         }
         else
@@ -159,7 +159,7 @@ public class VideoManager : MonoBehaviour
     }
     public void Seek()
     {
-        ytbPlayer.startFromSecondTime= (int)endTimer;
+        ytbPlayer.startFromSecondTime= (int)startTimer;
     }
     IEnumerator GetMediaInfo()
     {
@@ -236,7 +236,9 @@ public class VideoManager : MonoBehaviour
     }
     void OnPrepareCompleted(VideoPlayer source)
     {
-        
+        Seek();
+
+
         if (isYouTubeVideoAudio)
         {
           
