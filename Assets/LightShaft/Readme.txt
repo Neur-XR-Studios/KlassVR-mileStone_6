@@ -5,3 +5,7 @@ The usage of the plugin is simple, you can use a prefab and modify to what you n
 EAC Panoramic skybox thanks to Hakanai: https://github.com/hakanai/EACSkyboxShader
 
 For webgl take a look at the folder 'WebglSetup' if you want to host your webgl player system. (I 100% recommend to use your own).
+
+
+IMPORTANT: If you are having issues with JSON try to add the package from unity on package manager:
+packagename: com.unity.nuget.newtonsoft-json

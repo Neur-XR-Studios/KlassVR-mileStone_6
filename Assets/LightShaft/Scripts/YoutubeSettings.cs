@@ -274,15 +274,14 @@ namespace LightShaft.Scripts
         private bool alreadyGotUrls = false;
 
         //When the system stops to play try to use the backup system.
-        private bool BACKUPSYSTEM = true;
+        private bool BACKUPSYSTEM = false;
         IEnumerator YoutubeGenerateUrlUsingClient(string _videoUrl, string _formatCode)
         {
-
             alreadyGotUrls = false;
             CheckVideoUrlAndExtractThevideoId(youtubeUrl);
             WWWForm form = new WWWForm();
             //string ag = "";
-            string f = "{\"context\": {\"client\": {\"clientName\": \"ANDROID\",\"clientVersion\": \"17.31.35\",\"androidSdkVersion\": \"30\",\"hl\": \"en\"}},\"videoId\": \"" + youtubeVideoID + "\",}";
+            string f = "{\"context\": {\"client\": {\"clientName\": \"ANDROID_TESTSUITE\",\"clientVersion\": \"1.9\",\"androidSdkVersion\": \"30\",\"hl\": \"en\",\"gl\": \"US\",\"utcOffsetMinutes\": \"0\"}},\"videoId\": \"" + youtubeVideoID + "\",}";
             string fweb = "{\"context\": {\"client\": {\"clientName\": \"WEB\",\"clientVersion\": \"2.20220801.00.00\"}},\"videoId\": \"" + youtubeVideoID + "\",}";
             byte[] bodyRaw = Encoding.UTF8.GetBytes(f);
             //UnityWebRequest request = UnityWebRequest.Post("https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8", form);
@@ -292,7 +291,7 @@ namespace LightShaft.Scripts
             //request.SetRequestHeader("Origin","https://www.youtube.com");
             //request.SetRequestHeader("X-YouTube-Client-Name", "ANDROID");
             //request.SetRequestHeader("X-YouTube-Client-Version", "17.31.35");
-            string userAgentTemporary = "com.google.android.youtube/17.31.35 (Linux; U; Android 11) gzip";
+            string userAgentTemporary = "com.google.android.youtube/17.36.4 (Linux; U; Android 12; GB) gzip";
             //request.SetRequestHeader("Accept", "*/*");
             //request.SetRequestHeader("Accept-Encoding", "gzip, deflate");
             request.SetRequestHeader("User-Agent", userAgentTemporary);
@@ -323,27 +322,30 @@ namespace LightShaft.Scripts
 
                 //WriteLog("v", request.downloadHandler.text);
 
-                if ((request.downloadHandler.text.Contains("EQUIRECTANGULAR") || request.downloadHandler.text.Contains("MESH")))
-                {
-                    is360 = true;
-                    if (debug)
-                        Debug.Log("Possible 360 video");
-                    //videoPlayer.renderMode = VideoRenderMode.RenderTexture;
-                    //videoPlayer.aspectRatio = VideoAspectRatio.NoScaling;
-                }
-                else
-                {
-                    is360 = false;
-                    RenderSettings.skybox = skyboxMaterialNormal;
-                    if (!dontForceFullscreen && videoPlayer != null)
-                    {
-                        videoPlayer.renderMode = VideoRenderMode.CameraFarPlane;
-                        videoPlayer.aspectRatio = VideoAspectRatio.FitInside;
-                        videoPlayer.targetCamera = mainCamera;
-                    }
-                    if (debug)
-                        Debug.Log("No 360 video!");
-                }
+                // if ((request.downloadHandler.text.Contains("EQUIRECTANGULAR") || request.downloadHandler.text.Contains("MESH")))
+                // {
+                //     is360 = true;
+                //     if (debug)
+                //         Debug.Log("Possible 360 video");
+                //     //videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+                //     //videoPlayer.aspectRatio = VideoAspectRatio.NoScaling;
+                // }
+                // else
+                // {
+                //     if (!is360)
+                //     {
+                //         RenderSettings.skybox = skyboxMaterialNormal;
+                //     if (!dontForceFullscreen && videoPlayer != null)
+                //     {
+                //         videoPlayer.renderMode = VideoRenderMode.CameraFarPlane;
+                //         videoPlayer.aspectRatio = VideoAspectRatio.FitInside;
+                //         videoPlayer.targetCamera = mainCamera;
+                //     }
+                //     if (debug)
+                //         Debug.Log("No 360 video!");
+                //     }
+                //     
+                // }
 
                 //if no 360 play fullscreen.
                 if (is360)
@@ -368,7 +370,6 @@ namespace LightShaft.Scripts
                             if (!alreadyGotUrls)
                                 UrlsLoaded();
                         }
-
                     }
                 }
                 else
@@ -720,8 +721,8 @@ namespace LightShaft.Scripts
             //request.SetRequestHeader("User-Agent", USER_AGENT);
             yield return request.SendWebRequest();
             EnableThumbnailObject();
-          //  Texture2D thumb = DownloadHandlerTexture.GetContent(request);
-            //thumbnailObject.material.mainTexture = thumb;
+            Texture2D thumb = DownloadHandlerTexture.GetContent(request);
+            thumbnailObject.material.mainTexture = thumb;
         }
 
         //double lastTimePlayed = Mathf.Infinity;
@@ -1215,27 +1216,6 @@ namespace LightShaft.Scripts
             decryptedUrlForVideo = false;
             decryptedUrlForAudio = false;
 
-            if (videoQuality == YoutubeVideoQuality.STANDARD)
-            {
-                foreach (var info in videoInfos.Where(info => info.FormatCode == 18))
-                {
-                    //Debug.Log(info.RequiresDecryption);
-                    if (info.RequiresDecryption)
-                    {
-                        //The string is the video url with audio
-                        DecryptDownloadUrl(info.DownloadUrl, "", info.HtmlPlayerVersion, true);
-                    }
-                    else
-                    {
-                        videoUrl = info.DownloadUrl;
-                        videoAreReadyToPlay = true;
-                        OnYoutubeUrlsLoaded();
-                    }
-                    //videoTitle = info.Title;
-                }
-            }
-            else
-            {
                 if (is360)
                 {
                     if (videoQuality == YoutubeVideoQuality.UHD1440 || videoQuality == YoutubeVideoQuality.UHD2160)
@@ -1244,7 +1224,9 @@ namespace LightShaft.Scripts
 
                 bool needDecryption = false;
                 string _temporaryAudio = "", _temporaryVideo = "", _tempHtmlPlayerVersion = "";
-                videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
+                
+                if(videoQuality != YoutubeVideoQuality.STANDARD)
+                    videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
                 //Get the video with audio first
                 videoInfos.Reverse();
 
@@ -1657,12 +1639,10 @@ namespace LightShaft.Scripts
                 if (needDecryption)
                 {
                     decryptionNeeded = true;
-                    //RetryPlayYoutubeVideo();
-                    //eqowi9eqiowuehij
                     DecryptDownloadUrl(_temporaryVideo, _temporaryAudio, _tempHtmlPlayerVersion, false);
                 }
 
-            }
+            
         }
 
         private bool decryptionNeeded = false;
@@ -1919,6 +1899,7 @@ namespace LightShaft.Scripts
 
         private void RetryPlayYoutubeVideo()
         {
+            Debug.Log("Retry Load Video");
             Stop();
             currentRetryTime++;
             logTest = "Retry!!";
@@ -1958,7 +1939,8 @@ namespace LightShaft.Scripts
                 if (debug)
                     Debug.Log("Stopping video");
                 if (videoPlayer.isPlaying) { videoPlayer.Stop(); }
-                if (audioPlayer.isPlaying) { audioPlayer.Stop(); }
+                if(audioPlayer != null)
+                    if (audioPlayer.isPlaying) { audioPlayer.Stop(); }
             }
         }
 
@@ -1966,6 +1948,17 @@ namespace LightShaft.Scripts
         {
             youtubeUrlReady = true;
 
+            if (decryptionNeeded)
+            {
+                //Find N param and convert!
+                //Debug.Log("TEST URI: "+testinguri);
+            }
+
+            if (videoQuality == YoutubeVideoQuality.STANDARD)
+            {
+                videoUrl = audioUrl;
+            }
+            
             if (loadYoutubeUrlsOnly)
             {
                 Debug.Log("Url Generated to play, you can use the event callback: " + videoUrl);
@@ -2091,7 +2084,7 @@ namespace LightShaft.Scripts
         float lastErrorTime;
         private void VideoErrorReceived(VideoPlayer source, string message)
         {
-
+            return;
             lastErrorTime = Time.time;
             RetryPlayYoutubeVideo();
             Debug.Log("Youtube VideoErrorReceived! Retry: " + message);
@@ -2429,12 +2422,12 @@ namespace LightShaft.Scripts
 
                 if (SystemInfo.processorCount > 1)
                 {
-                    thread1 = new Thread(() => DoRegexFunctionsForVideo(r));
+                    thread1 = new Thread(() => DoRegexFunctionsForAudio(r));
                     thread1.Start();
                 }
                 else
                 {
-                    DoRegexFunctionsForVideo(r);
+                    DoRegexFunctionsForAudio(r);
                 }
 #endif
             }
@@ -2660,209 +2653,208 @@ namespace LightShaft.Scripts
         };
         //private int patternIndex = 0;
 
-        private void DoRegexFunctionsForVideo(string jsF)
-        {
-            //Debug.Log("jeqwihjeahskledas");
-            masterURLForVideo = jsF;
-            string js = jsF;
-
-            //Find "C" in this: var A = B.sig||C (B.s)
-            //string functNamePattern = @"(\w+)\s*=\s*function\(\s*(\w+)\s*\)\s*{\s*\2\s*=\s*\2\.split\(\""\""\)\s*;(.+)return\s*\2\.join\(\""\""\)\s*}\s*;";
-
-            //string functNamePattern = @"\b[cs]\s*&&\s*[adf]\.set\([^,]+\s*,\s*encodeURIComponent\s*\(\s*([\w$]+)\(";
-            //string functNamePattern = patternNames[patternIndex];
-            patternNames = magicResult.defaultFuncName;
-            var funcName = "";
-            foreach (string pat in patternNames)
-            {
-                string r = Regex.Match(js, pat).Groups[1].Value;
-                if (!string.IsNullOrEmpty(r))
-                {
-                    funcName = r;
-                    break;
-                }
-            }
-
-            if (funcName.Contains("$"))
-            {
-                funcName = "\\" + funcName; //Due To Dollar Sign Introduction, Need To Escape
-            }
-
-            // string nCodeFn = "&&\\(b=a.get\\(\"n\"\\)\\)&&\\(b=(.+)\\(b\\)";
-            // Debug.Log(nCodeFn);
-            // string nFuncName = Regex.Match(js, nCodeFn).Groups[1].Value;
-            // string nFunctionStart = nFuncName+"=function(a)";
-            // Debug.Log(nFunctionStart);
-            // int ndx = js.IndexOf(nFunctionStart);
-            // string nSubBody = js.Substring(ndx+nFunctionStart.Length);
-            // Debug.Log(nSubBody);
-
-            //string fb = "var "+nFunctionStart + utils.cutAfterJSON(nSubBody);
-            string funcPattern = @"(?!h\.)" + @funcName + @"=function\(\w+\)\{.*?join.*\};"; //Escape funcName string
-
-            var funcBody = Regex.Match(js, funcPattern).Value; //Entire sig function old entire function....
-
-            //Debug.Log(funcBody);
-            var lines = funcBody.Split(';'); //Each line in sig function
-
-            string idReverse = "", idSlice = "", idCharSwap = ""; //Hold name for each cipher method
-            string functionIdentifier = "";
-            string operations = "";
-
-            foreach (var line in lines.Skip(1).Take(lines.Length - 2)) //Matches the funcBody with each cipher method. Only runs till all three are defined.
-            {
-                //Debug.Log(line);
-                if (!string.IsNullOrEmpty(idReverse) && !string.IsNullOrEmpty(idSlice) &&
-                    !string.IsNullOrEmpty(idCharSwap))
-                {
-                    break; //Break loop if all three cipher methods are defined
-                }
-
-                functionIdentifier = GetFunctionFromLine(line);
-                string reReverse = string.Format(@"{0}:\bfunction\b\(\w+\)", functionIdentifier); //Regex for reverse (one parameter)
-                string reSlice = string.Format(@"{0}:\bfunction\b\([a],b\).(\breturn\b)?.?\w+\.", functionIdentifier); //Regex for slice (return or not)
-                string reSwap = string.Format(@"{0}:\bfunction\b\(\w+\,\w\).\bvar\b.\bc=a\b", functionIdentifier); //Regex for the char swap.
-
-                if (functionIdentifier == "nt")
-                {
-                    string test = @"encodeURIComponent:\bfunction\b\(\w+\)";
-                    if (Regex.Match(js, test).Success)
-                    {
-                        //if found uri component dont use it igore;
-                    }
-                    else
-                    {
-                        if (Regex.Matches(js, reReverse).Count > 1)
-                        {
-                            if (idReverse == "")
-                                idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
-                        }
-                    }
-                }
-                else
-                {
-                    if (Regex.Match(js, reReverse).Success)
-                    {
-                        if (idReverse == "")
-                            idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
-                    }
-                }
-
-                if (Regex.Match(js, reSlice).Success)
-                {
-                    if (idSlice == "")
-                        idSlice = functionIdentifier; //If def matched the regex for slice then the current function is defined as the slice.
-                }
-
-                if (Regex.Match(js, reSwap).Success)
-                {
-                    if (idCharSwap == "")
-                        idCharSwap = functionIdentifier; //If def matched the regex for charSwap then the current function is defined as swap.
-                }
-
-            }
-
-            foreach (var line in lines.Skip(1).Take(lines.Length - 2))
-            {
-                Match m;
-                functionIdentifier = GetFunctionFromLine(line);
-                if ((m = Regex.Match(line, @"\(\w+,(?<index>\d+)\)")).Success && functionIdentifier == idCharSwap)
-                {
-                    operations += "w" + m.Groups["index"].Value + " "; //operation is a swap (w)
-                }
-
-                if ((m = Regex.Match(line, @"\(\w+,(?<index>\d+)\)")).Success && functionIdentifier == idSlice)
-                {
-                    operations += "s" + m.Groups["index"].Value + " "; //operation is a slice
-                }
-
-                if (functionIdentifier == idReverse) //No regex required for reverse (reverse method has no parameters)
-                {
-                    operations += "r "; //operation is a reverse
-                }
-            }
-
-
-
-
-
-
-            //New method:::For possible study and application in the future.
-            //var fnname = Regex.Match(js, @"yt\.akamaized\.net.*encodeURIComponent\((\w+)").Groups[1].Value;
-            //var _argnamefnbodyresult = Regex.Match(js, fnname + @"=function\((.+?)\){(.+?)}");
-            //var helpername = Regex.Match(_argnamefnbodyresult.Groups[2].Value, @";(.+?)\..+?\(").Groups[1].Value;
-            //var helperresult = Regex.Match(js, "var " + helpername + "={[\\S\\s]+?};");
-            //var result = helperresult.Groups[0].Value;
-
-            //MatchCollection matches = Regex.Matches(result, @"[A-Za-z0-9]+:function\s*([A-z0-9]+)?\s*\((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)\s*\{(?:[^}{]+|\{(?:[^}{]+|\{[^}{]*\})*\})*\}");
-            //var funcs = _argnamefnbodyresult.Groups[2].Value.Split(';');
-
-            ////string test = "AA0qz64iwNKTsnE3bAg6_WsuQ_c8DH-qx-rCg4QtABTAiAuFtEwS3jPXlvdZV5VqN=c-Fh2QYc52hOwGOn5dXYzKMAhIQRwA2IxgLAw";
-            //var sign = encryptedSignatureVideo.ToCharArray();
-
-            //foreach (string func in funcs)
-            //{
-            //    foreach (Match group in matches)
-            //    {
-            //        if (group.Value.Contains("reverse"))
-            //        {
-            //            var test = Regex.Match(group.Value, "^(.*?):").Groups[1].Value;
-            //            if (func.Contains(test))
-            //            {
-            //                sign = ReverseFunction(sign);
-            //            }
-            //        }
-            //        else if (group.Value.Contains("splice"))
-            //        {
-            //            var test = Regex.Match(group.Value, "^(.*?):").Groups[1].Value;
-            //            if (func.Contains(test))
-            //            {
-            //                sign = SpliceFunction(sign, GetOpIndex(func));
-            //            }
-            //        }
-            //        else
-            //        {
-            //            var test = Regex.Match(group.Value, "^(.*?):").Groups[1].Value;
-            //            if (func.Contains(test))
-            //            {
-
-            //                sign = SwapFunction(sign, GetOpIndex(func));
-            //            }
-            //        }
-            //    }
-            //}
-
-            //string n = new string(sign);
-
-            //Debug.Log(n);
-            operations = operations.Trim();
-
-
-
-            if (string.IsNullOrEmpty(operations))
-            {
-                Debug.Log("Operation is empty for low qual, trying again.");
-                if (canUpdate)
-                {
-                    canUpdate = false;
-                }
-                decryptedVideoUrlResult = null;
-                return;
-            }
-            else
-            {
-
-                string magicResult = MagicHands.DecipherWithOperations(encryptedSignatureVideo, operations);
-                //Debug.Log(SignatureQuery);
-                //Debug.Log(magicResult);
-                decryptedVideoUrlResult = HTTPHelperYoutube.ReplaceQueryStringParameter(EncryptUrlForVideo, SignatureQuery, magicResult, lsigForVideo);
-                //var url = new Uri(decryptedVideoUrlResult);
-                //decryptedVideoUrlResult = decryptedVideoUrlResult.Replace(url.Host, "redirector.googlevideo.com");
-            }
-
-            //Debug.Log("DECRY: "+decryptedVideoUrlResult);
-            decryptedUrlForVideo = true;
-        }
+        // private void DoRegexFunctionsForVideo(string jsF)
+        // {
+        //     masterURLForVideo = jsF;
+        //     string js = jsF;
+        //
+        //     //Find "C" in this: var A = B.sig||C (B.s)
+        //     //string functNamePattern = @"(\w+)\s*=\s*function\(\s*(\w+)\s*\)\s*{\s*\2\s*=\s*\2\.split\(\""\""\)\s*;(.+)return\s*\2\.join\(\""\""\)\s*}\s*;";
+        //
+        //     //string functNamePattern = @"\b[cs]\s*&&\s*[adf]\.set\([^,]+\s*,\s*encodeURIComponent\s*\(\s*([\w$]+)\(";
+        //     //string functNamePattern = patternNames[patternIndex];
+        //     patternNames = magicResult.defaultFuncName;
+        //     var funcName = "";
+        //     foreach (string pat in patternNames)
+        //     {
+        //         string r = Regex.Match(js, pat).Groups[1].Value;
+        //         if (!string.IsNullOrEmpty(r))
+        //         {
+        //             funcName = r;
+        //             break;
+        //         }
+        //     }
+        //
+        //     if (funcName.Contains("$"))
+        //     {
+        //         funcName = "\\" + funcName; //Due To Dollar Sign Introduction, Need To Escape
+        //     }
+        //
+        //     // string nCodeFn = "&&\\(b=a.get\\(\"n\"\\)\\)&&\\(b=(.+)\\(b\\)";
+        //     // Debug.Log(nCodeFn);
+        //     // string nFuncName = Regex.Match(js, nCodeFn).Groups[1].Value;
+        //     // string nFunctionStart = nFuncName+"=function(a)";
+        //     // Debug.Log(nFunctionStart);
+        //     // int ndx = js.IndexOf(nFunctionStart);
+        //     // string nSubBody = js.Substring(ndx+nFunctionStart.Length);
+        //     // Debug.Log(nSubBody);
+        //
+        //     //string fb = "var "+nFunctionStart + utils.cutAfterJSON(nSubBody);
+        //     string funcPattern = @"(?!h\.)" + @funcName + @"=function\(\w+\)\{.*?join.*\};"; //Escape funcName string
+        //
+        //     var funcBody = Regex.Match(js, funcPattern).Value; //Entire sig function old entire function....
+        //
+        //     //Debug.Log(funcBody);
+        //     var lines = funcBody.Split(';'); //Each line in sig function
+        //
+        //     string idReverse = "", idSlice = "", idCharSwap = ""; //Hold name for each cipher method
+        //     string functionIdentifier = "";
+        //     string operations = "";
+        //
+        //     foreach (var line in lines.Skip(1).Take(lines.Length - 2)) //Matches the funcBody with each cipher method. Only runs till all three are defined.
+        //     {
+        //         //Debug.Log(line);
+        //         if (!string.IsNullOrEmpty(idReverse) && !string.IsNullOrEmpty(idSlice) &&
+        //             !string.IsNullOrEmpty(idCharSwap))
+        //         {
+        //             break; //Break loop if all three cipher methods are defined
+        //         }
+        //
+        //         functionIdentifier = GetFunctionFromLine(line);
+        //         string reReverse = string.Format(@"{0}:\bfunction\b\(\w+\)", functionIdentifier); //Regex for reverse (one parameter)
+        //         string reSlice = string.Format(@"{0}:\bfunction\b\([a],b\).(\breturn\b)?.?\w+\.", functionIdentifier); //Regex for slice (return or not)
+        //         string reSwap = string.Format(@"{0}:\bfunction\b\(\w+\,\w\).\bvar\b.\bc=a\b", functionIdentifier); //Regex for the char swap.
+        //
+        //         if (functionIdentifier == "nt")
+        //         {
+        //             string test = @"encodeURIComponent:\bfunction\b\(\w+\)";
+        //             if (Regex.Match(js, test).Success)
+        //             {
+        //                 //if found uri component dont use it igore;
+        //             }
+        //             else
+        //             {
+        //                 if (Regex.Matches(js, reReverse).Count > 1)
+        //                 {
+        //                     if (idReverse == "")
+        //                         idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
+        //                 }
+        //             }
+        //         }
+        //         else
+        //         {
+        //             if (Regex.Match(js, reReverse).Success)
+        //             {
+        //                 if (idReverse == "")
+        //                     idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
+        //             }
+        //         }
+        //
+        //         if (Regex.Match(js, reSlice).Success)
+        //         {
+        //             if (idSlice == "")
+        //                 idSlice = functionIdentifier; //If def matched the regex for slice then the current function is defined as the slice.
+        //         }
+        //
+        //         if (Regex.Match(js, reSwap).Success)
+        //         {
+        //             if (idCharSwap == "")
+        //                 idCharSwap = functionIdentifier; //If def matched the regex for charSwap then the current function is defined as swap.
+        //         }
+        //
+        //     }
+        //
+        //     foreach (var line in lines.Skip(1).Take(lines.Length - 2))
+        //     {
+        //         Match m;
+        //         functionIdentifier = GetFunctionFromLine(line);
+        //         if ((m = Regex.Match(line, @"\(\w+,(?<index>\d+)\)")).Success && functionIdentifier == idCharSwap)
+        //         {
+        //             operations += "w" + m.Groups["index"].Value + " "; //operation is a swap (w)
+        //         }
+        //
+        //         if ((m = Regex.Match(line, @"\(\w+,(?<index>\d+)\)")).Success && functionIdentifier == idSlice)
+        //         {
+        //             operations += "s" + m.Groups["index"].Value + " "; //operation is a slice
+        //         }
+        //
+        //         if (functionIdentifier == idReverse) //No regex required for reverse (reverse method has no parameters)
+        //         {
+        //             operations += "r "; //operation is a reverse
+        //         }
+        //     }
+        //
+        //
+        //
+        //
+        //
+        //
+        //     //New method:::For possible study and application in the future.
+        //     //var fnname = Regex.Match(js, @"yt\.akamaized\.net.*encodeURIComponent\((\w+)").Groups[1].Value;
+        //     //var _argnamefnbodyresult = Regex.Match(js, fnname + @"=function\((.+?)\){(.+?)}");
+        //     //var helpername = Regex.Match(_argnamefnbodyresult.Groups[2].Value, @";(.+?)\..+?\(").Groups[1].Value;
+        //     //var helperresult = Regex.Match(js, "var " + helpername + "={[\\S\\s]+?};");
+        //     //var result = helperresult.Groups[0].Value;
+        //
+        //     //MatchCollection matches = Regex.Matches(result, @"[A-Za-z0-9]+:function\s*([A-z0-9]+)?\s*\((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)\s*\{(?:[^}{]+|\{(?:[^}{]+|\{[^}{]*\})*\})*\}");
+        //     //var funcs = _argnamefnbodyresult.Groups[2].Value.Split(';');
+        //
+        //     ////string test = "AA0qz64iwNKTsnE3bAg6_WsuQ_c8DH-qx-rCg4QtABTAiAuFtEwS3jPXlvdZV5VqN=c-Fh2QYc52hOwGOn5dXYzKMAhIQRwA2IxgLAw";
+        //     //var sign = encryptedSignatureVideo.ToCharArray();
+        //
+        //     //foreach (string func in funcs)
+        //     //{
+        //     //    foreach (Match group in matches)
+        //     //    {
+        //     //        if (group.Value.Contains("reverse"))
+        //     //        {
+        //     //            var test = Regex.Match(group.Value, "^(.*?):").Groups[1].Value;
+        //     //            if (func.Contains(test))
+        //     //            {
+        //     //                sign = ReverseFunction(sign);
+        //     //            }
+        //     //        }
+        //     //        else if (group.Value.Contains("splice"))
+        //     //        {
+        //     //            var test = Regex.Match(group.Value, "^(.*?):").Groups[1].Value;
+        //     //            if (func.Contains(test))
+        //     //            {
+        //     //                sign = SpliceFunction(sign, GetOpIndex(func));
+        //     //            }
+        //     //        }
+        //     //        else
+        //     //        {
+        //     //            var test = Regex.Match(group.Value, "^(.*?):").Groups[1].Value;
+        //     //            if (func.Contains(test))
+        //     //            {
+        //
+        //     //                sign = SwapFunction(sign, GetOpIndex(func));
+        //     //            }
+        //     //        }
+        //     //    }
+        //     //}
+        //
+        //     //string n = new string(sign);
+        //
+        //     //Debug.Log(n);
+        //     operations = operations.Trim();
+        //
+        //
+        //
+        //     if (string.IsNullOrEmpty(operations))
+        //     {
+        //         Debug.Log("Operation is empty for low qual, trying again.");
+        //         if (canUpdate)
+        //         {
+        //             canUpdate = false;
+        //         }
+        //         decryptedVideoUrlResult = null;
+        //         return;
+        //     }
+        //     else
+        //     {
+        //
+        //         string magicResult = MagicHands.DecipherWithOperations(encryptedSignatureVideo, operations);
+        //         //Debug.Log(SignatureQuery);
+        //         //Debug.Log(magicResult);
+        //         decryptedVideoUrlResult = HTTPHelperYoutube.ReplaceQueryStringParameter(EncryptUrlForVideo, SignatureQuery, magicResult, lsigForVideo);
+        //         //var url = new Uri(decryptedVideoUrlResult);
+        //         //decryptedVideoUrlResult = decryptedVideoUrlResult.Replace(url.Host, "redirector.googlevideo.com");
+        //     }
+        //
+        //     //Debug.Log("DECRY: "+decryptedVideoUrlResult);
+        //     decryptedUrlForVideo = true;
+        // }
 
         private static int GetOpIndex(string op)
         {
@@ -2894,28 +2886,59 @@ namespace LightShaft.Scripts
         {
             masterURLForAudio = jsF;
             string js = masterURLForAudio;
-            //Find "C" in this: var A = B.sig||C (B.s)
-            //string functNamePattern = @"(\w+)\s*=\s*function\(\s*(\w+)\s*\)\s*{\s*\2\s*=\s*\2\.split\(\""\""\)\s*;(.+)return\s*\2\.join\(\""\""\)\s*}\s*;";
+          
+            var patternName = "[$_\\w]+=function\\([$_\\w]+\\){([$_\\w]+)=\\1\\.split\\(['\"]{2}\\);.*?return \\1\\.join\\(['\"]{2}\\)}";
+            var cipherCallSite = Regex.Match(js, patternName).Groups[0].Value;
+            
+            var cipherContainer = Regex
+                .Match(cipherCallSite, @"([$_\w]+)\.[$_\w]+\([$_\w]+,\d+\);")
+                .Groups[1]
+                .Value;
+            
+            string regEscape = Regex.Escape(cipherContainer);
+            
+            var cipherDefinition = Regex
+                .Match(
+                    js,
+                    $"var {regEscape}={{.*?}};",
+                    RegexOptions.Singleline
+                )
+                .Groups[0]
+                .Value;
+            
 
-            //string functNamePattern = @"\b[cs]\s*&&\s*[adf]\.set\([^,]+\s*,\s*encodeURIComponent\s*\(\s*([\w$]+)\(";
-            //string functNamePattern = patternNames[patternIndex];
-            patternNames = magicResult.defaultFuncName;
-            var funcName = "";
-            foreach (string pat in patternNames)
-            {
-                string r = Regex.Match(js, pat).Groups[1].Value;
-                if (!string.IsNullOrEmpty(r))
-                {
-                    funcName = r;
-                    break;
-                }
-            }
+            
+            // Identify the swap cipher function
+            var swapFuncName = Regex
+                .Match(
+                    cipherDefinition,
+                    @"([$_\w]+):function\([$_\w]+,[$_\w]+\){+[^}]*?%[^}]*?}",
+                    RegexOptions.Singleline
+                )
+                .Groups[1]
+                .Value;
 
-            if (funcName.Contains("$"))
-            {
-                funcName = "\\" + funcName; //Due To Dollar Sign Introduction, Need To Escape
-            }
+            // Identify the splice cipher function
+            var spliceFuncName = Regex
+                .Match(
+                    cipherDefinition,
+                    @"([$_\w]+):function\([$_\w]+,[$_\w]+\){+[^}]*?splice[^}]*?}",
+                    RegexOptions.Singleline
+                )
+                .Groups[1]
+                .Value;
 
+            // Identify the reverse cipher function
+            var reverseFuncName = Regex
+                .Match(
+                    cipherDefinition,
+                    @"([$_\w]+):function\([$_\w]+\){+[^}]*?reverse[^}]*?}",
+                    RegexOptions.Singleline
+                )
+                .Groups[1]
+                .Value;
+            
+            
             // string nCodeFn = "&&\\(b=a.get\\(\"n\"\\)\\)&&\\(b=(.+)\\(b\\)";
             // Debug.Log(nCodeFn);
             // string nFuncName = Regex.Match(js, nCodeFn).Groups[1].Value;
@@ -2926,102 +2949,114 @@ namespace LightShaft.Scripts
             // Debug.Log(nSubBody);
 
             //string fb = "var "+nFunctionStart + utils.cutAfterJSON(nSubBody);
-            string funcPattern = @"(?!h\.)" + @funcName + @"=function\(\w+\)\{.*?join.*\};"; //Escape funcName string
+            //string funcPattern = @"(?!h\.)" + @funcName + @"=function\(\w+\)\{.*?join.*\};"; //Escape funcName string
 
-            var funcBody = Regex.Match(js, funcPattern).Value; //Entire sig function old entire function....
-
+            //var funcBody = Regex.Match(js, funcPattern).Value; //Entire sig function old entire function....
+            var funcBody = cipherDefinition;
+            
             //Debug.Log(funcBody);
             var lines = funcBody.Split(';'); //Each line in sig function
 
-            string idReverse = "", idSlice = "", idCharSwap = ""; //Hold name for each cipher method
-            string functionIdentifier = "";
+            string idReverse = reverseFuncName, idSlice = spliceFuncName, idCharSwap = swapFuncName; //Hold name for each cipher method
             string operations = "";
 
 
-            foreach (var line in lines.Skip(1).Take(lines.Length - 2)) //Matches the funcBody with each cipher method. Only runs till all three are defined.
+            // foreach (var line in lines.Skip(1).Take(lines.Length - 2)) //Matches the funcBody with each cipher method. Only runs till all three are defined.
+            // {
+            //
+            //     if (!string.IsNullOrEmpty(idReverse) && !string.IsNullOrEmpty(idSlice) &&
+            //         !string.IsNullOrEmpty(idCharSwap))
+            //     {
+            //         break; //Break loop if all three cipher methods are defined
+            //     }
+            //
+            //
+            //     functionIdentifier = GetFunctionFromLine(line);
+            //
+            //
+            //     string reReverse = string.Format(@"{0}:\bfunction\b\(\w+\)", functionIdentifier); //Regex for reverse (one parameter)
+            //     string reSlice = string.Format(@"{0}:\bfunction\b\([a],b\).(\breturn\b)?.?\w+\.", functionIdentifier); //Regex for slice (return or not)
+            //     string reSwap = string.Format(@"{0}:\bfunction\b\(\w+\,\w\).\bvar\b.\bc=a\b", functionIdentifier); //Regex for the char swap.
+            //
+            //     if (functionIdentifier == "nt")
+            //     {
+            //         string test = @"encodeURIComponent:\bfunction\b\(\w+\)";
+            //         if (Regex.Match(js, test).Success)
+            //         {
+            //             //if found uri component dont use it igore;
+            //         }
+            //         else
+            //         {
+            //             if (Regex.Matches(js, reReverse).Count > 1)
+            //             {
+            //                 if (idReverse == "")
+            //                     idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
+            //             }
+            //         }
+            //     }
+            //     else
+            //     {
+            //         if (Regex.Match(js, reReverse).Success)
+            //         {
+            //             if (idReverse == "")
+            //                 idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
+            //         }
+            //     }
+            //
+            //     if (Regex.Match(js, reSlice).Success)
+            //     {
+            //         if (idSlice == "")
+            //             idSlice = functionIdentifier; //If def matched the regex for slice then the current function is defined as the slice.
+            //     }
+            //
+            //     if (Regex.Match(js, reSwap).Success)
+            //     {
+            //         if (idCharSwap == "")
+            //             idCharSwap = functionIdentifier; //If def matched the regex for charSwap then the current function is defined as swap.
+            //     }
+            // }
+
+            foreach (var statement in cipherCallSite.Split(';'))
             {
+                
+                var calledFuncName = Regex
+                    .Match(statement, @"[$_\w]+\.([$_\w]+)\([$_\w]+,\d+\)")
+                    .Groups[1]
+                    .Value;
 
-                if (!string.IsNullOrEmpty(idReverse) && !string.IsNullOrEmpty(idSlice) &&
-                    !string.IsNullOrEmpty(idCharSwap))
+                if (string.IsNullOrWhiteSpace(calledFuncName))
+                    continue;
+
+                if (string.Equals(calledFuncName, swapFuncName, StringComparison.Ordinal))
                 {
-                    break; //Break loop if all three cipher methods are defined
+                    var index = Regex
+                        .Match(statement, @"\([$_\w]+,(\d+)\)")
+                        .Groups[1]
+                        .Value;
+                    operations += "w" + index + " ";
+                    //Debug.Log("index: "+index);
                 }
-
-
-                functionIdentifier = GetFunctionFromLine(line);
-
-
-                string reReverse = string.Format(@"{0}:\bfunction\b\(\w+\)", functionIdentifier); //Regex for reverse (one parameter)
-                string reSlice = string.Format(@"{0}:\bfunction\b\([a],b\).(\breturn\b)?.?\w+\.", functionIdentifier); //Regex for slice (return or not)
-                string reSwap = string.Format(@"{0}:\bfunction\b\(\w+\,\w\).\bvar\b.\bc=a\b", functionIdentifier); //Regex for the char swap.
-
-                if (functionIdentifier == "nt")
+                else if (string.Equals(calledFuncName, spliceFuncName, StringComparison.Ordinal))
                 {
-                    string test = @"encodeURIComponent:\bfunction\b\(\w+\)";
-                    if (Regex.Match(js, test).Success)
-                    {
-                        //if found uri component dont use it igore;
-                    }
-                    else
-                    {
-                        if (Regex.Matches(js, reReverse).Count > 1)
-                        {
-                            if (idReverse == "")
-                                idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
-                        }
-                    }
+                    var index = Regex
+                        .Match(statement, @"\([$_\w]+,(\d+)\)")
+                        .Groups[1]
+                        .Value;
+
+                    operations += "s" + index + " ";
                 }
-                else
+                else if (string.Equals(calledFuncName, reverseFuncName, StringComparison.Ordinal))
                 {
-                    if (Regex.Match(js, reReverse).Success)
-                    {
-                        if (idReverse == "")
-                            idReverse = functionIdentifier; //If def matched the regex for reverse then the current function is a defined as the reverse
-                    }
-                }
-
-                if (Regex.Match(js, reSlice).Success)
-                {
-                    if (idSlice == "")
-                        idSlice = functionIdentifier; //If def matched the regex for slice then the current function is defined as the slice.
-                }
-
-                if (Regex.Match(js, reSwap).Success)
-                {
-                    if (idCharSwap == "")
-                        idCharSwap = functionIdentifier; //If def matched the regex for charSwap then the current function is defined as swap.
+                    operations += "r ";
+                    
+                    //operationsx.Add(new ReverseCipherOperation());
                 }
             }
 
-            foreach (var line in lines.Skip(1).Take(lines.Length - 2))
-            {
-                Match m;
-                functionIdentifier = GetFunctionFromLine(line);
-
-                if ((m = Regex.Match(line, @"\(\w+,(?<index>\d+)\)")).Success && functionIdentifier == idCharSwap)
-                {
-
-                    operations += "w" + m.Groups["index"].Value + " "; //operation is a swap (w)
-                }
-
-                if ((m = Regex.Match(line, @"\(\w+,(?<index>\d+)\)")).Success && functionIdentifier == idSlice)
-                {
-
-                    operations += "s" + m.Groups["index"].Value + " "; //operation is a slice
-                }
-
-                if (functionIdentifier == idReverse) //No regex required for reverse (reverse method has no parameters)
-                {
-
-                    operations += "r "; //operation is a reverse
-                }
-            }
-
-            operations = operations.Trim();
+            //operations = operations.Trim();
 
             if (string.IsNullOrEmpty(operations))
             {
-                Debug.Log("Operation is empty, trying again.");
                 if (canUpdate)
                 {
                     canUpdate = false;
@@ -3031,20 +3066,21 @@ namespace LightShaft.Scripts
             }
             else
             {
-                string AudioMagicResult = MagicHands.DecipherWithOperations(encryptedSignatureAudio, operations);
+                if (encryptedSignatureAudio != "")
+                {
+                    string AudioMagicResult = MagicHands.DecipherWithOperations(encryptedSignatureAudio, operations);
+                    decryptedAudioUrlResult = HTTPHelperYoutube.ReplaceQueryStringParameter(EncryptUrlForAudio, SignatureQuery, AudioMagicResult, lsigForAudio);
+                    decryptedUrlForAudio = true;
+                }
                 string VideoMagicResult = MagicHands.DecipherWithOperations(encryptedSignatureVideo, operations);
-
-                decryptedAudioUrlResult = HTTPHelperYoutube.ReplaceQueryStringParameter(EncryptUrlForAudio, SignatureQuery, AudioMagicResult, lsigForAudio);
                 decryptedVideoUrlResult = HTTPHelperYoutube.ReplaceQueryStringParameter(EncryptUrlForVideo, SignatureQuery, VideoMagicResult, lsigForVideo);
-
+                decryptedUrlForVideo = true;
+                
                 //var url = new Uri(decryptedAudioUrlResult);
                 //decryptedAudioUrlResult = decryptedAudioUrlResult.Replace(url.Host, "redirector.googlevideo.com");
                 //url = new Uri(decryptedVideoUrlResult);
                 //decryptedVideoUrlResult = decryptedVideoUrlResult.Replace(url.Host, "redirector.googlevideo.com");
             }
-
-            decryptedUrlForAudio = true;
-            //decryptedUrlForVideo = true;
         }
         void DelayForAudio()
         {
@@ -3071,7 +3107,6 @@ namespace LightShaft.Scripts
 
         public IEnumerator WebGlRequest(Action<string> callback, string id, string host)
         {
-            Debug.Log(host + "getvideo.php?videoid=" + id + "&type=Download");
             UnityWebRequest request = UnityWebRequest.Get(host + "getvideo.php?videoid=" + id + "&type=Download");
             //request.SetRequestHeader("User-Agent", UserAgent);
             yield return request.SendWebRequest();
@@ -3117,9 +3152,7 @@ namespace LightShaft.Scripts
             bool tempfix = false;
             if (Regex.IsMatch(jsonForHtmlVersion, @"[""\']status[""\']\s*:\s*[""\']LOGIN_REQUIRED") || tempfix)
             {
-                Debug.Log("wtf");
                 var url = "https://www.docs.google.com/get_video_info?video_id=" + videoId + "&eurl=https://youtube.googleapis.com/v/" + videoId + "&html5=1&c=TVHTML5&cver=6.20180913";
-                Debug.Log(url);
                 UnityWebRequest request = UnityWebRequest.Get(url);
                 //request.SetRequestHeader("User-Agent", UserAgent);
                 yield return request.SendWebRequest();
@@ -3289,15 +3322,14 @@ namespace LightShaft.Scripts
                 {
                     if (!loadYoutubeUrlsOnly)
                     {
-                        Debug.Log("Resolver Exception!: " + e.Message);
-                        Debug.Log(e.Source + " " + e.StackTrace);
-                        Debug.Log(Application.persistentDataPath);
+                        // Debug.Log("Resolver Exception!: " + e.Message);
+                        // Debug.Log(e.Source + " " + e.StackTrace);
+                        // Debug.Log(Application.persistentDataPath);
                         //string filePath = Application.persistentDataPath + "/log_download_exception_" + DateTime.Now.ToString("ddMMyyyyhhmmssffff") + ".txt";
                         //Debug.Log("DownloadUrl content saved to " + filePath);
                         //if (Application.isEditor && debug)
                         //    WriteLog("log_download_exception", "jsonForHtml: " + jsonForHtmlVersion);
                         //File.WriteAllText(filePath, downloadUrlResponse.data);
-                        Debug.Log("retry!");
                         if (player != null)
                         {
                             player.RetryPlayYoutubeVideo();
@@ -3832,20 +3864,21 @@ namespace LightShaft.Scripts
 
         void GetNewSystem()
         {
-            if (is360)
-            {
-                StartCoroutine(DownloadYoutubeUrl(tmpv, GetTheJS, this));
-            }
-
-            else
-            {
+            
+            // if (is360)
+            // {
+            //     StartCoroutine(DownloadYoutubeUrl(tmpv, GetTheJS, this));
+            // }
+            //
+            // else
+            // {
                 decryptionNeeded = true;
                 if (!BACKUPSYSTEM)
                     StartCoroutine(YoutubeGenerateUrlUsingClient(tmpv, GetFormatCode()));
                 else
                     GetDownloadUrls(UrlsLoaded, youtubeUrl, this);
 
-            }
+            // }
 
         }
 
@@ -3909,11 +3942,13 @@ namespace LightShaft.Scripts
 
         IEnumerator ExtractorGetNParamAudio(string dAUrl, string dUrl)
         {
+            Debug.Log(dUrl);
             IDictionary<string, string> strs = HTTPHelperYoutube.ParseQueryString(dAUrl);
             if (strs.ContainsKey(NQuery))
             {
                 string nitem = strs[NQuery];
                 UnityWebRequest request;
+                Debug.Log("https://yt-dlp-online-utils.vercel.app/youtube/nparams/decrypt?player=" + testinguri + "&n=" + nitem);
                 request = UnityWebRequest.Get("https://yt-dlp-online-utils.vercel.app/youtube/nparams/decrypt?player=" + testinguri + "&n=" + nitem);
                 yield return request.SendWebRequest();
                 var requestedData = JSON.Parse(request.downloadHandler.text);
@@ -3929,6 +3964,11 @@ namespace LightShaft.Scripts
         IEnumerator ExtractorGetNParam(string dUrl)
         {
             IDictionary<string, string> strs = HTTPHelperYoutube.ParseQueryString(dUrl);
+            if (!strs.ContainsKey(NQuery))
+            {
+                RetryPlayYoutubeVideo();
+                yield return null;
+            }
             string nitem = strs[NQuery];
             UnityWebRequest request;
             //Debug.Log("Old n: "+nitem);

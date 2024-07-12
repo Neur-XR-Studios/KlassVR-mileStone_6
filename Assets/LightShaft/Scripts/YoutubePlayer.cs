@@ -24,7 +24,7 @@ namespace LightShaft.Scripts
             }
           //  Pause();
         }
-       
+
         ///<summary>This function is callback only, only will be called when the on url are ready to use.</summary>
         private void UrlReadyToUse(string urlToUse)
         {
@@ -275,7 +275,6 @@ namespace LightShaft.Scripts
                 }
             }
             Debug.Log("The video is ready to play");
-            urlFetching.Invoke();
         }
 
         ///<summary>Call the next url of the playlist.</summary>
@@ -367,7 +366,7 @@ namespace LightShaft.Scripts
         {
             if (autoPlayOnEnable && !pauseCalled)
             {
-             StartCoroutine(WaitThingsGetDone());
+                StartCoroutine(WaitThingsGetDone());
             }
         }
         //A workaround for mobile bugs.

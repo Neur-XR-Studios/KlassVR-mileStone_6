@@ -17,10 +17,8 @@ public class YoutubePlayerLivestream : MonoBehaviour {
     //AVPRO
     //public MediaPlayer mplayer;
     
-	void Start () 
-    {
+	void Start () {
         GetLivestreamUrl(_livestreamUrl);
-       
     }
 
     public void GetLivestreamUrl(string url)
@@ -164,8 +162,7 @@ public class YoutubePlayerLivestream : MonoBehaviour {
         JObject json = JObject.Parse(player_response);
         //string playerResponseRaw = json["args"]["player_response"].ToString();
         //JObject playerResponseJson = JObject.Parse(playerResponseRaw);
-      bool isLive = json["videoDetails"]["isLive"].Value<bool>();
-       
+        bool isLive = json["videoDetails"]["isLive"].Value<bool>();
 
         if (isLive)
         {

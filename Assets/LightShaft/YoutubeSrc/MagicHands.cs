@@ -10,6 +10,7 @@ namespace YoutubeLight
     {
         private static string ApplyOperation(string cipher, string op)
         {
+            //Debug.Log("Doing "+op[0]+" operation");
             switch (op[0])
             {
                 case 'r':

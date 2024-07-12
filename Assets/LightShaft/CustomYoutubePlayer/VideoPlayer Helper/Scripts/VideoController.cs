@@ -175,6 +175,7 @@ namespace Unity.VideoHelper
         /// <param name="url">The video URL.</param>
         public void PrepareForUrl(string url)
         {
+            Debug.Log("SENT THE URL!");
             videoPlayer.source = VideoSource.Url;
             videoPlayer.url = url;
             videoPlayer.Prepare();
