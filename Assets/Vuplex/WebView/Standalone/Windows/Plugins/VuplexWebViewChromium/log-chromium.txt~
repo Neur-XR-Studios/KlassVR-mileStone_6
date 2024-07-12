@@ -246,3 +246,7 @@
 [0712/122438.227:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
 [0712/122438.231:WARNING:task_impl.cc(32)] No task runner for threadId 0
 [0712/123320.508:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/123930.253:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/124104.050:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0712/124104.055:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0712/124309.684:WARNING:task_impl.cc(32)] No task runner for threadId 0
