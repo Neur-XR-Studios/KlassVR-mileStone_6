@@ -171,7 +171,9 @@ public class API : MonoBehaviour
                         string youTubeUrl = content["youTubeUrl"];
                         youTubeUrl = AddingURL(youTubeUrl);
                         YouTubeUrlTest = youTubeUrl;
-                        youtubeTestManager.CheckVideostatus();
+
+                        //uncomment this for checking youtube status
+                    //    youtubeTestManager.CheckVideostatus();
 
 
                         bool youTubeVideoAudio = content["youTubeVideoAudio"].AsBool;
@@ -179,7 +181,8 @@ public class API : MonoBehaviour
                         string youTubeStartTimer = content["youTubeStartTimer"];
                         string youTubeEndTimer = content["youTubeEndTimer"];
                         string classEnvironment = content["classEnvironment"].Value;
-                        room.AssignClassRoom(classEnvironment);
+                        //uncomment this for assign different room
+                       // room.AssignClassRoom(classEnvironment);
 
                          JSONArray modelDetails = content["modelDetails"].AsArray;
                         if (modelDetails != null)

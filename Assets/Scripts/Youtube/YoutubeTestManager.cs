@@ -5,7 +5,18 @@ using System.Reflection;
 using System.Xml.Linq;
 using UnityEngine;
 using XR.Interaction.PoseDetection.Debug;
+public class  GenericList<T>
+{
+    private T data;
 
+    public T GetData()
+    { return data; }
+    public void SetData(T data) {  this.data = data; }
+}
+public class YoutubestatusPodt: YoutubeTestManager
+{
+
+}
 public class YoutubeTestManager : MonoBehaviour
 
 {

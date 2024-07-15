@@ -137,7 +137,9 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: KlassReality_V1.4.3
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 5461793772012613398, guid: 8dd9dca3125a08041b0cd7ff91f35a49, type: 2}
+  - {fileID: 11400000, guid: 76880fcaf4919eb46928de1568aa7789, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
