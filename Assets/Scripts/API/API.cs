@@ -57,6 +57,14 @@ public class API : MonoBehaviour
     private ThreesixtyImageManager threesixtyImageManager;
     private WebManager webManager;
     private ChangeClassRoom room;
+    private string youtubeUrlTest;
+    private YoutubeTestManager youtubeTestManager;
+
+    public string YouTubeUrlTest
+    {
+        get { return youtubeUrlTest; }
+        set { youtubeUrlTest = value; }
+    }
     private void Start()
     {
         room=FindAnyObjectByType<ChangeClassRoom>();
@@ -67,6 +75,7 @@ public class API : MonoBehaviour
         addingImage= FindAnyObjectByType<AddingImage>();
         serviceScript = FindAnyObjectByType<ServiceScript>();
         videoManager = FindAnyObjectByType<VideoManager>();
+        youtubeTestManager=FindAnyObjectByType<YoutubeTestManager>();
         CallingClassVrExperiance();
 
 
@@ -161,7 +170,10 @@ public class API : MonoBehaviour
 
                         string youTubeUrl = content["youTubeUrl"];
                         youTubeUrl = AddingURL(youTubeUrl);
-                     
+                        YouTubeUrlTest = youTubeUrl;
+                        youtubeTestManager.CheckVideostatus();
+
+
                         bool youTubeVideoAudio = content["youTubeVideoAudio"].AsBool;
                         string youTubeVideoScript = content["youTubeVideoScript"];
                         string youTubeStartTimer = content["youTubeStartTimer"];
