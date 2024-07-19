@@ -23,6 +23,7 @@ TagManager:
   - test
   - 3dmodel
   - notAChild
+  - Light
   layers:
   - Default
   - TransparentFX
