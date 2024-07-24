@@ -319,3 +319,4 @@
 [0715/153702.222:WARNING:main_runner.cc(261)] Alloy bootstrap is deprecated and will be removed in ~M127. See https://github.com/chromiumembedded/cef/issues/3685
 [0718/100528.036:WARNING:main_runner.cc(261)] Alloy bootstrap is deprecated and will be removed in ~M127. See https://github.com/chromiumembedded/cef/issues/3685
 [0718/100608.434:WARNING:main_runner.cc(261)] Alloy bootstrap is deprecated and will be removed in ~M127. See https://github.com/chromiumembedded/cef/issues/3685
+[0724/113548.022:WARNING:main_runner.cc(261)] Alloy bootstrap is deprecated and will be removed in ~M127. See https://github.com/chromiumembedded/cef/issues/3685
