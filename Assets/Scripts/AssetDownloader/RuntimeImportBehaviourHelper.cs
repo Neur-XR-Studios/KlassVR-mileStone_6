@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Transformers;
 using UnityEngine.XR.Interaction.Toolkit;
-using SocketIOClient.Transport;
 
 public class RuntimeImportBehaviourHelper : MonoBehaviour
 {

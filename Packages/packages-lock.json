@@ -375,7 +375,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.gsxr": {
-      "version": "file:E:/NoloVR/GSXR Unity SDK 2.0.0 (1)/GSXRUnityXRPlugin2.0.0_202311202010/com.unity.xr.gsxr",
+      "version": "file:D:/NoloVR/GSXR Unity SDK 2.0.0 (1)/GSXRUnityXRPlugin2.0.0_202311202010/com.unity.xr.gsxr",
       "depth": 0,
       "source": "local",
       "dependencies": {
