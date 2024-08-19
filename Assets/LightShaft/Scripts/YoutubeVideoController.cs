@@ -56,6 +56,7 @@ namespace LightShaft.Scripts
             {
                 if (previousVideoButton != null && nextVideoButton != null)
                 {
+
                     previousVideoButton.gameObject.SetActive(true);
                     nextVideoButton.gameObject.SetActive(true);
                 }

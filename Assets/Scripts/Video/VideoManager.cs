@@ -4,6 +4,8 @@ using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.Video;
 using LightShaft.Scripts;
+using SimpleJSON;
+using UnityEngine.Networking;
 
 public class VideoManager : MonoBehaviour
 {
@@ -133,7 +135,43 @@ public class VideoManager : MonoBehaviour
       
     
     }
-    IEnumerator OpenVideo()
+    // Event triggered
+    public void YoutubeError()
+    {
+
+        StartCoroutine(PostRequest("https://dummyjson.com/auth", "Error Occure"));
+    }
+    IEnumerator PostRequest(string api, string jsonData)
+    {
+
+        var req = new UnityWebRequest(api, "POST");
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+        req.uploadHandler = (UploadHandler)new UploadHandlerRaw(jsonToSend);
+
+        req.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        req.SetRequestHeader("Content-Type", "application/json");
+        //  req.certificateHandler = new BypassCertificateHandler();
+        //Send the request then wait here until it returns
+        yield return req.SendWebRequest();
+        if (req.isNetworkError) // error in request
+        {
+            Debug.Log("Error While Sending: " + req.error);
+        }
+        else // done
+        {
+
+            Debug.Log("return" + req.downloadHandler.text);
+            string value = req.downloadHandler.text;
+            //  Employee employee= JsonUtility.FromJson<Employee>(value);
+            //    Debug.Log(employee.username);   
+
+        }
+
+    }
+
+
+
+ IEnumerator OpenVideo()
     {
         yield return new WaitUntil(() => videoOpened);
         IsAudioNullInVideo();
