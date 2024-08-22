@@ -539,27 +539,51 @@ public class AnnotationManager : MonoBehaviour
        SettingCubeDistance(newcubeButton);
 
     }
-   /* public void AssignDistance()
-    {
-        foreach (GameObject cube in tempCube)
-        {
-            SettingCubeDistance(cube);
-        }
-        tempCube.Clear();
-    }*/
+    /* public void AssignDistance()
+     {
+         foreach (GameObject cube in tempCube)
+         {
+             SettingCubeDistance(cube);
+         }
+         tempCube.Clear();
+     }*/
+    static int callCount = 0;
+    static int alternateCallCount = 0;
     public void SettingCubeDistance(GameObject newcubeButton)
     {
       //  Vector3 direction = (model.transform.position - newcubeButton.transform.position).normalized;
         Vector3 newPosition;
         // float minDistance = 0.2511871f;
         // Vector3 newPosition = newcubeButton.transform.position + newcubeButton.transform.forward * 0.1000000f; // Adjusted line
-        if (newcubeButton.transform.localPosition.x < 0)
+        if (callCount < 1)
         {
-            newPosition = new Vector3(newcubeButton.transform.localPosition.x - 0.2511871f, newcubeButton.transform.localPosition.y , newcubeButton.transform.localPosition.z );
+            if (newcubeButton.transform.localPosition.x < 0)
+            {
+                newPosition = new Vector3(newcubeButton.transform.localPosition.x - 0.2511871f, newcubeButton.transform.localPosition.y, newcubeButton.transform.localPosition.z);
+                callCount++;
+            }
+            else
+            {
+                if (alternateCallCount < 1)
+                {
+                    newPosition = new Vector3(newcubeButton.transform.localPosition.x + 0.2511871f, newcubeButton.transform.localPosition.y, newcubeButton.transform.localPosition.z);
+                    alternateCallCount++;
+                }
+                else
+                {
+                    // Execute this code after the else block is met twice
+                    newPosition = new Vector3(newcubeButton.transform.localPosition.x, newcubeButton.transform.localPosition.y + 0.2511871f, newcubeButton.transform.localPosition.z);
+                    alternateCallCount = 0; // Reset the alternate counter after executing the new code
+                }
+
+            }
         }
         else
         {
-            newPosition = new Vector3(newcubeButton.transform.localPosition.x + 0.2511871f, newcubeButton.transform.localPosition.y , newcubeButton.transform.localPosition.z );
+            // Execute this code after the condition is met twice
+            newPosition = new Vector3(newcubeButton.transform.localPosition.x, newcubeButton.transform.localPosition.y + 0.2511871f, newcubeButton.transform.localPosition.z);
+            callCount = 0; // Reset the counter after executing the new codealternateCallCount
+           
         }
 
         newcubeButton.transform.localPosition = newPosition;
