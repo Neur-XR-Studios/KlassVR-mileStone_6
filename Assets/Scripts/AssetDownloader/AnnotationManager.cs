@@ -490,11 +490,11 @@ public class AnnotationManager : MonoBehaviour
         newcubeButton.transform.localScale = new Vector3(.05f, .05f, .05f);
         newcubeButton.transform.localRotation = emptyObject.transform.rotation;
         newcubeButton.transform.localPosition = emptyObject.transform.localPosition;
-
-        emptyObject = Detach(emptyObject, model.transform.GetChild(0).gameObject);
         sourse.transform.position = emptyObject.transform.position;
+     //   emptyObject = Detach(emptyObject, model.transform.GetChild(0).gameObject);
+     
 
-        emptyObject = Detach(newcubeButton, model.transform.GetChild(0).gameObject);
+      //  emptyObject = Detach(newcubeButton, model.transform.GetChild(0).gameObject);
         newcubeButton.AddComponent<LookAt>();
 
         // StartCoroutine(AddingLookAt(newcubeButton.gameObject));
@@ -520,7 +520,7 @@ public class AnnotationManager : MonoBehaviour
         {
             GameObject linePrefab = line.gameObject;
             Ir_Testing lineScript = linePrefab.GetComponent<Ir_Testing>();
-            lineScript.SetUpPoints(newcubeButton, sourse);
+            lineScript.SetUpPoints(newcubeButton, emptyObject);
 
 
         }
@@ -539,31 +539,31 @@ public class AnnotationManager : MonoBehaviour
        SettingCubeDistance(newcubeButton);
 
     }
-    public void AssignDistance()
+   /* public void AssignDistance()
     {
         foreach (GameObject cube in tempCube)
         {
             SettingCubeDistance(cube);
         }
         tempCube.Clear();
-    }
+    }*/
     public void SettingCubeDistance(GameObject newcubeButton)
     {
-        Vector3 direction = (model.transform.position - newcubeButton.transform.position).normalized;
+      //  Vector3 direction = (model.transform.position - newcubeButton.transform.position).normalized;
         Vector3 newPosition;
         // float minDistance = 0.2511871f;
         // Vector3 newPosition = newcubeButton.transform.position + newcubeButton.transform.forward * 0.1000000f; // Adjusted line
         if (newcubeButton.transform.localPosition.x < 0)
         {
-            newPosition = new Vector3(newcubeButton.transform.position.x - 0.2511871f, newcubeButton.transform.position.y , newcubeButton.transform.position.z );
+            newPosition = new Vector3(newcubeButton.transform.localPosition.x - 0.2511871f, newcubeButton.transform.localPosition.y , newcubeButton.transform.localPosition.z );
         }
         else
         {
-            newPosition = new Vector3(newcubeButton.transform.position.x + 0.2511871f, newcubeButton.transform.position.y , newcubeButton.transform.position.z );
+            newPosition = new Vector3(newcubeButton.transform.localPosition.x + 0.2511871f, newcubeButton.transform.localPosition.y , newcubeButton.transform.localPosition.z );
         }
 
-        newcubeButton.transform.position = newPosition;
-        Debug.Log(newcubeButton.name + " position adjusted to move to the front.");
+        newcubeButton.transform.localPosition = newPosition;
+        Debug.Log(newcubeButton.transform.position);
         newcubeButton.transform.eulerAngles = Vector3.zero;
         //
 
