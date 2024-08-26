@@ -515,15 +515,7 @@ public class AnnotationManager : MonoBehaviour
             button.onClick.AddListener(() => OnButtonClick(annotationText, heading));
         }
 
-        Transform line = newcubeButton.transform.Find("LineRender");
-        if (line != null)
-        {
-            GameObject linePrefab = line.gameObject;
-            Ir_Testing lineScript = linePrefab.GetComponent<Ir_Testing>();
-            lineScript.SetUpPoints(newcubeButton, emptyObject);
-
-
-        }
+       
         /*  Transform line = newcubeButton.transform.Find("LineRender");
           Transform childTransform = newcubeButton.transform.Find("Point");
           if (line != null)
@@ -537,18 +529,35 @@ public class AnnotationManager : MonoBehaviour
 
         tempCube.Add(newcubeButton);
        SettingCubeDistance(newcubeButton);
+        Transform line = newcubeButton.transform.Find("LineRender");
+        if(isHorizontal)
+        {
+            sourcePoint= newcubeButton.transform.Find("sourcePointHorizontal");
+        }
+        else
+        {
+            sourcePoint = newcubeButton.transform.Find("sourcePointVertical");
+        }
+        //Transform sourcePoint = newcubeButton.transform.Find("sourcePointHorizontal");
+       // Transform sourcePointtwo = newcubeButton.transform.Find("sourcePointVertical");
+        if (line != null)
+        {
+            GameObject linePrefab = line.gameObject;
+            Ir_Testing lineScript = linePrefab.GetComponent<Ir_Testing>();
+            lineScript.SetUpPoints(sourcePoint.gameObject, emptyObject);
+
+
+        }
 
     }
-    /* public void AssignDistance()
-     {
-         foreach (GameObject cube in tempCube)
-         {
-             SettingCubeDistance(cube);
-         }
-         tempCube.Clear();
-     }*/
+   public bool EvaluatePositionAxes(bool isaxes)
+    {
+        return isaxes;
+     }
+    private Transform sourcePoint;
     static int callCount = 0;
     static int alternateCallCount = 0;
+    private bool isHorizontal;
     public void SettingCubeDistance(GameObject newcubeButton)
     {
       //  Vector3 direction = (model.transform.position - newcubeButton.transform.position).normalized;
@@ -561,6 +570,7 @@ public class AnnotationManager : MonoBehaviour
             {
                 newPosition = new Vector3(newcubeButton.transform.localPosition.x - 0.2511871f, newcubeButton.transform.localPosition.y, newcubeButton.transform.localPosition.z);
                 callCount++;
+                isHorizontal=true;
             }
             else
             {
@@ -568,12 +578,14 @@ public class AnnotationManager : MonoBehaviour
                 {
                     newPosition = new Vector3(newcubeButton.transform.localPosition.x + 0.2511871f, newcubeButton.transform.localPosition.y, newcubeButton.transform.localPosition.z);
                     alternateCallCount++;
+                    isHorizontal = true;
                 }
                 else
                 {
                     // Execute this code after the else block is met twice
                     newPosition = new Vector3(newcubeButton.transform.localPosition.x, newcubeButton.transform.localPosition.y + 0.2511871f, newcubeButton.transform.localPosition.z);
                     alternateCallCount = 0; // Reset the alternate counter after executing the new code
+                    isHorizontal = false;
                 }
 
             }
@@ -583,7 +595,7 @@ public class AnnotationManager : MonoBehaviour
             // Execute this code after the condition is met twice
             newPosition = new Vector3(newcubeButton.transform.localPosition.x, newcubeButton.transform.localPosition.y + 0.2511871f, newcubeButton.transform.localPosition.z);
             callCount = 0; // Reset the counter after executing the new codealternateCallCount
-           
+            isHorizontal =false;
         }
 
         newcubeButton.transform.localPosition = newPosition;
