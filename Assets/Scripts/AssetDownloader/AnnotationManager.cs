@@ -530,9 +530,13 @@ public class AnnotationManager : MonoBehaviour
         tempCube.Add(newcubeButton);
        SettingCubeDistance(newcubeButton);
         Transform line = newcubeButton.transform.Find("LineRender");
-        if(isHorizontal)
+        if(axis==Axis.horizontal)
         {
             sourcePoint= newcubeButton.transform.Find("sourcePointHorizontal");
+        }
+        else if (axis== Axis.horizontalRight)
+        {
+            sourcePoint = newcubeButton.transform.Find("sourcePointHorizontalRight");
         }
         else
         {
@@ -558,6 +562,13 @@ public class AnnotationManager : MonoBehaviour
     static int callCount = 0;
     static int alternateCallCount = 0;
     private bool isHorizontal;
+    private enum Axis
+    {
+        horizontal,
+        vertical,
+        horizontalRight
+    }
+    private Axis axis;
     public void SettingCubeDistance(GameObject newcubeButton)
     {
       //  Vector3 direction = (model.transform.position - newcubeButton.transform.position).normalized;
@@ -571,6 +582,9 @@ public class AnnotationManager : MonoBehaviour
                 newPosition = new Vector3(newcubeButton.transform.localPosition.x - 0.2511871f, newcubeButton.transform.localPosition.y, newcubeButton.transform.localPosition.z);
                 callCount++;
                 isHorizontal=true;
+                axis = Axis.horizontal;
+
+
             }
             else
             {
@@ -579,6 +593,7 @@ public class AnnotationManager : MonoBehaviour
                     newPosition = new Vector3(newcubeButton.transform.localPosition.x + 0.2511871f, newcubeButton.transform.localPosition.y, newcubeButton.transform.localPosition.z);
                     alternateCallCount++;
                     isHorizontal = true;
+                    axis = Axis.horizontalRight;
                 }
                 else
                 {
@@ -586,6 +601,7 @@ public class AnnotationManager : MonoBehaviour
                     newPosition = new Vector3(newcubeButton.transform.localPosition.x, newcubeButton.transform.localPosition.y + 0.2511871f, newcubeButton.transform.localPosition.z);
                     alternateCallCount = 0; // Reset the alternate counter after executing the new code
                     isHorizontal = false;
+                    axis = Axis.vertical;
                 }
 
             }
@@ -596,6 +612,7 @@ public class AnnotationManager : MonoBehaviour
             newPosition = new Vector3(newcubeButton.transform.localPosition.x, newcubeButton.transform.localPosition.y + 0.2511871f, newcubeButton.transform.localPosition.z);
             callCount = 0; // Reset the counter after executing the new codealternateCallCount
             isHorizontal =false;
+            axis = Axis.vertical;
         }
 
         newcubeButton.transform.localPosition = newPosition;
