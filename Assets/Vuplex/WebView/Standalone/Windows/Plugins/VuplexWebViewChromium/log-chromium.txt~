@@ -331,3 +331,38 @@
 [0826/160110.670:WARNING:task_impl.cc(32)] No task runner for threadId 0
 [0826/161343.949:WARNING:task_impl.cc(32)] No task runner for threadId 0
 [0826/162105.029:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0826/174742.262:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0826/174851.687:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/100138.273:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/101021.038:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/104818.005:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/120953.223:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/121302.370:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/121404.889:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0827/173847.190:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0828/161843.182:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0828/163112.774:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0828/163449.210:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/151301.497:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/151605.770:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/151643.157:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/151958.379:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/152039.754:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/152146.661:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/152334.913:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/152718.353:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/152906.443:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0830/152906.447:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/153017.349:ERROR:shared_image_manager.cc(225)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[0830/153017.396:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0830/153017.410:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/153127.253:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/153246.685:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/153405.682:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/153442.324:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/154035.473:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/154134.229:ERROR:command_buffer_proxy_impl.cc(323)] GPU state invalid after WaitForGetOffsetInRange.
+[0830/154134.233:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/154457.010:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/154806.090:WARNING:task_impl.cc(32)] No task runner for threadId 0
+[0830/155021.549:WARNING:task_impl.cc(32)] No task runner for threadId 0

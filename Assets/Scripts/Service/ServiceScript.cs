@@ -175,7 +175,8 @@ public class ServiceScript : MonoBehaviour
     }
     public void SkipVideos()
     {
-        WithoutSkippingModel.Invoke();
+        // WithoutSkippingModel.Invoke();
+        threesixtyImageManager.ThreeSixtyExperianceStarted();
     }
     public void SkipModelDownload()
     {
